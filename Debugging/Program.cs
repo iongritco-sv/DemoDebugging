@@ -1,32 +1,33 @@
-﻿namespace Debugging
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
+namespace Debugging
+{
     class Program
     {
         private static int State = 0;
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello Programmers' Week 2021!");
 
-            var localIntVariable = 10;
-            var localStringVariable = "String variables";
+            var intVariable = 10;
+            var stringVariable = "string value";
             var jsonString = @"{'Email': 'ion.gritco @gmail.com','FirstName': 'FirstName1541575195020363','LastName': 'LastName1541575195020363'}";
-            localIntVariable = 20;
-            DoSomethingInAnotherMethod(localIntVariable);
+            intVariable = 20;
+            
+            DoSomethingInAnotherMethod(intVariable);
 
-            var listOfElements = new List<MyClass>();
+            var listOfElements = new List<DebuggingClass>();
             for (int i = 0; i < 1000; i++)
             {
-                listOfElements.Add(new MyClass{Number = i, Title = $"Title {i}"});
+                listOfElements.Add(new DebuggingClass{Number = i, Title = $"Title {i}"});
             }
 
-            var myClass = new MyClass();
-            myClass.Title = "prop1";
-            myClass.Title = "prop2";
+            var debuggingClass = new DebuggingClass();
+            debuggingClass.Title = "value1";
+            debuggingClass.Title = "value2";
 
             ChangeState();
 
@@ -41,9 +42,9 @@
                 Console.WriteLine(e);
             }
 
-            myClass.Title = "Titlu dupa exceptie";
+            debuggingClass.Title = "Title after exception";
 
-            Console.WriteLine("dada");
+            Console.WriteLine("Finish him!");
 
             Console.ReadLine();
         }
@@ -56,7 +57,7 @@
 
         private static int ChangeState(int i)
         {
-            State = State + i;
+            State += i;
             return State;
         }
 
@@ -65,8 +66,8 @@
             Console.WriteLine($"Another method {input}");
         }
 
-        [DebuggerDisplay("Obiect cu titlu {Title} {Number}")]
-        private class MyClass
+        //[DebuggerDisplay("Object with {Title} {Number}")]
+        private class DebuggingClass
         {
             public string Title { get; set; }
 
